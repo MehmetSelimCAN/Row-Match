@@ -13,7 +13,7 @@ public class GridCreator : MonoBehaviour {
 
     public readonly Cell[,] Cells = new Cell[Cols, Rows];
 
-    private void Awake() {
+    private void Start() {
         CreateCells();
         PrepareCells();
     }
