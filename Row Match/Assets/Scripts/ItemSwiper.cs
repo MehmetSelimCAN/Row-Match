@@ -1,8 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemSwiper : MonoBehaviour {
+
+    public static ItemSwiper Instance { get; private set; }
 
     private const string CellCollider = "CellCollider";
 
@@ -16,7 +19,15 @@ public class ItemSwiper : MonoBehaviour {
 
     private bool swapExecuted = false;
 
+    public event EventHandler<OnSwapExecutedEventArgs> OnSwapExecuted;
+    public class OnSwapExecutedEventArgs : EventArgs {
+        public Cell firstCell;
+        public Cell secondCell;
+    }
+
     private void Awake() {
+        Instance = this;
+
         Camera = Camera.main;
     }
 
@@ -55,9 +66,12 @@ public class ItemSwiper : MonoBehaviour {
         Cell firstCell = firstCellHit.gameObject.GetComponent<Cell>();
         Cell secondCell = secondCellHit.gameObject.GetComponent<Cell>();
 
-        Grid.SwapCells(firstCell, secondCell);
+        OnSwapExecuted?.Invoke(this, new OnSwapExecutedEventArgs {
+            firstCell = firstCell,
+            secondCell = secondCell
+        });
+
         swapExecuted = true;
-        MoveCounter.Instance.SpentMove();
     }
 
     private Vector2 FindSwipeDirection(Vector2 dragStartPosition, Vector2 dragCurrentPosition) {

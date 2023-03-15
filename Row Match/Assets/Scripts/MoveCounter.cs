@@ -13,10 +13,19 @@ public class MoveCounter : MonoBehaviour {
 
     private void Awake() {
         Instance = this;
+
         UpdateRemainingMoveCountText();
     }
 
-    public void SpentMove() {
+    private void Start() {
+        ItemSwiper.Instance.OnSwapExecuted += MoveCounter_OnSwapExecuted;
+    }
+
+    private void MoveCounter_OnSwapExecuted(object sender, ItemSwiper.OnSwapExecutedEventArgs e) {
+        SpentMove();
+    }
+
+    private void SpentMove() {
         remainingMoveCount--;
         UpdateRemainingMoveCountText();
     }

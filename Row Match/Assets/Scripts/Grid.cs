@@ -14,8 +14,14 @@ public class Grid : MonoBehaviour {
     public readonly Cell[,] Cells = new Cell[Cols, Rows];
 
     private void Start() {
+        ItemSwiper.Instance.OnSwapExecuted += Grid_OnSwapExecuted;
+
         CreateCells();
         PrepareCells();
+    }
+
+    private void Grid_OnSwapExecuted(object sender, ItemSwiper.OnSwapExecutedEventArgs e) {
+        SwapCells(e.firstCell, e.secondCell);
     }
 
     private void CreateCells() {
@@ -35,7 +41,7 @@ public class Grid : MonoBehaviour {
         }
     }
 
-    public void SwapCells(Cell firstCell, Cell secondCell) {
+    private void SwapCells(Cell firstCell, Cell secondCell) {
         Cells[firstCell.X, firstCell.Y] = secondCell;
         Cells[secondCell.X, secondCell.Y] = firstCell;
 
