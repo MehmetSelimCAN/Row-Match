@@ -1,5 +1,5 @@
 public enum ItemType {
-    FinishedCube = 0,
+    CompletedCube = 0,
     GreenCube = 1,
     YellowCube = 2,
     BlueCube = 3,

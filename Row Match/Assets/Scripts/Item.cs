@@ -2,16 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CubeItem : MonoBehaviour {
+public class Item : MonoBehaviour {
 
     public SpriteRenderer SpriteRenderer;
-
-    private Cell cell;
 
     private ItemType itemType;
     public ItemType ItemType { get { return itemType; } }
 
-    public void PrepareCubeItem(ItemType itemType) {
+    public void PrepareItem(ItemType itemType) {
         this.itemType = itemType;
         PrepareSprite();
     }

@@ -9,8 +9,8 @@ public class Cell : MonoBehaviour {
     [HideInInspector] public int Y;
     [HideInInspector] public Vector3Int Position { get { return new Vector3Int(X, Y, 0); } }
 
-    private CubeItem cubeItem;
-    public CubeItem CubeItem { get { return cubeItem; } }
+    private Item item;
+    public Item Item { get { return item; } }
 
     public Text LabelText;
 
@@ -22,7 +22,7 @@ public class Cell : MonoBehaviour {
         transform.localPosition = new Vector3(x, y);
         UpdateLabel();
 
-        ItemType itemType = ItemFactory.GetRandomCubeItemType();
+        ItemType itemType = ItemFactory.GetRandomItemType();
         InsertItem(itemType);
     }
 
@@ -33,10 +33,10 @@ public class Cell : MonoBehaviour {
     }
 
     public void InsertItem(ItemType itemType) {
-        if (cubeItem != null) return;
+        if (item != null) return;
 
-        cubeItem = ItemFactory.Instance.CreateCubeItem(this, itemType);
-        cubeItem.transform.position = transform.position;
+        item = ItemFactory.Instance.CreateItem(this, itemType);
+        item.transform.position = transform.position;
     }
 
     public void Move(Vector3Int newPosition) {

@@ -6,7 +6,7 @@ public class ItemFactory : MonoBehaviour {
 
     public static ItemFactory Instance { get; private set; }
 
-    private static readonly ItemType[] DefaultCubeArray = new[] {
+    private static readonly ItemType[] DefaultItemArray = new[] {
             ItemType.GreenCube,
             ItemType.YellowCube,
             ItemType.BlueCube,
@@ -17,15 +17,15 @@ public class ItemFactory : MonoBehaviour {
         Instance = this;
     }
 
-    public CubeItem CreateCubeItem(Cell cell, ItemType itemType) {
-        var cubeItem = cell.gameObject.AddComponent<CubeItem>();
-        cubeItem.PrepareCubeItem(itemType);
+    public Item CreateItem(Cell cell, ItemType itemType) {
+        var item = cell.gameObject.AddComponent<Item>();
+        item.PrepareItem(itemType);
 
-        return cubeItem;
+        return item;
     }
 
-    public static ItemType GetRandomCubeItemType() {
-        return GetRandomItemTypeFromArray(DefaultCubeArray);
+    public static ItemType GetRandomItemType() {
+        return GetRandomItemTypeFromArray(DefaultItemArray);
     }
 
     private static ItemType GetRandomItemTypeFromArray(ItemType[] itemTypeArray) {
