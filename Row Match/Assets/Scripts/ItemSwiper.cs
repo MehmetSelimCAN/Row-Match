@@ -17,7 +17,7 @@ public class ItemSwiper : MonoBehaviour {
     private bool swapExecuted = false;
 
     private void Awake() {
-        Camera = Camera.main;    
+        Camera = Camera.main;
     }
 
     private void Update() {
@@ -25,6 +25,8 @@ public class ItemSwiper : MonoBehaviour {
     }
 
     private void HandleDragging() {
+        if (MoveCounter.Instance.RemainingMoveCount == 0) return;
+
         if (Input.GetMouseButtonDown(0)) {
             dragStartPosition = Camera.ScreenToWorldPoint(Input.mousePosition);
             swapExecuted = false;
@@ -55,6 +57,7 @@ public class ItemSwiper : MonoBehaviour {
 
         Grid.SwapCells(firstCell, secondCell);
         swapExecuted = true;
+        MoveCounter.Instance.SpentMove();
     }
 
     private Vector2 FindSwipeDirection(Vector2 dragStartPosition, Vector2 dragCurrentPosition) {
