@@ -66,6 +66,9 @@ public class ItemSwiper : MonoBehaviour {
         Cell firstCell = firstCellHit.gameObject.GetComponent<Cell>();
         Cell secondCell = secondCellHit.gameObject.GetComponent<Cell>();
 
+        if (firstCell.Item.ItemType == ItemType.CompletedCube) return;
+        if (secondCell.Item.ItemType == ItemType.CompletedCube) return;
+
         OnSwapExecuted?.Invoke(this, new OnSwapExecutedEventArgs {
             firstCell = firstCell,
             secondCell = secondCell

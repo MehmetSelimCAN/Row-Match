@@ -14,6 +14,12 @@ public class Item : MonoBehaviour {
         PrepareSprite();
     }
 
+    public void ChangeItemType(ItemType itemType) {
+        this.itemType = itemType;
+
+        UpdateSprite();
+    }
+
     public void PrepareSprite() {
         Sprite sprite = GetSpritesForItemType();
         SpriteRenderer = AddSprite(sprite);
@@ -31,6 +37,8 @@ public class Item : MonoBehaviour {
                 return spriteProvider.BlueCubeSprite;
             case ItemType.RedCube:
                 return spriteProvider.RedCubeSprite;
+            case ItemType.CompletedCube:
+                return spriteProvider.CompletedCubeSprite;
         }
 
         return null;
@@ -43,7 +51,8 @@ public class Item : MonoBehaviour {
         return spriteRenderer;
     }
 
-    public void UpdateSprite(Sprite sprite) {
+    public void UpdateSprite() {
+        Sprite sprite = GetSpritesForItemType();
         SpriteRenderer.sprite = sprite;
     }
 }

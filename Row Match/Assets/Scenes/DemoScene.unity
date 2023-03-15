@@ -402,6 +402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e264af24aaa6aec42b283b68f4adcbea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CompletedCubeSprite: {fileID: 21300000, guid: e2cb4959ff1ee034a9b7d9fb9ce592a6, type: 3}
   RedCubeSprite: {fileID: 21300000, guid: ee88ee92e58e55040a6a6eb1d2d0b2b2, type: 3}
   GreenCubeSprite: {fileID: 21300000, guid: e538c2ccc855dd34483e28907e5cb563, type: 3}
   BlueCubeSprite: {fileID: 21300000, guid: 80f72fd40929d8f4d889bac6207ec6a4, type: 3}

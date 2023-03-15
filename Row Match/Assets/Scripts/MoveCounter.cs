@@ -8,7 +8,7 @@ public class MoveCounter : MonoBehaviour {
     public static MoveCounter Instance { get; private set; }
 
     [SerializeField] private Text remainingMoveCountText;
-    private int remainingMoveCount = 5;
+    private int remainingMoveCount = 25;
     public int RemainingMoveCount { get { return remainingMoveCount; } }
 
     private void Awake() {

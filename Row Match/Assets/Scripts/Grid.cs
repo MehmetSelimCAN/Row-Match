@@ -13,6 +13,8 @@ public class Grid : MonoBehaviour {
 
     public readonly Cell[,] Cells = new Cell[Cols, Rows];
 
+    private List<int> completedRowIndexes = new List<int>();
+
     private void Start() {
         ItemSwiper.Instance.OnSwapExecuted += Grid_OnSwapExecuted;
 
@@ -22,6 +24,7 @@ public class Grid : MonoBehaviour {
 
     private void Grid_OnSwapExecuted(object sender, ItemSwiper.OnSwapExecutedEventArgs e) {
         SwapCells(e.firstCell, e.secondCell);
+        CheckEveryRow();
     }
 
     private void CreateCells() {
@@ -48,5 +51,29 @@ public class Grid : MonoBehaviour {
         Vector3Int tempPosition = firstCell.Position;
         firstCell.Move(secondCell.Position);
         secondCell.Move(tempPosition);
+    }
+
+    private void CheckEveryRow() {
+        for (int x = 0; x < Rows; x++) {
+            if (completedRowIndexes.Contains(x)) continue;
+
+            int matchedCellsCountWithFirstCell = 0;
+            for (int y = 0; y < Cols - 1; y++) {
+                if (Cells[y, x].Item.ItemType == Cells[y + 1, x].Item.ItemType) {
+                    matchedCellsCountWithFirstCell++;
+                }
+            }
+            
+            if (matchedCellsCountWithFirstCell == Cols - 1) {
+                completedRowIndexes.Add(x);
+                UpdateCompletedRow(x);
+            }
+        }
+    }
+
+    private void UpdateCompletedRow(int rowIndex) {
+        for (int y = 0; y < Cols; y++) {
+            Cells[y, rowIndex].Item.ChangeItemType(ItemType.CompletedCube);
+        }
     }
 }
