@@ -1,8 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Grid : MonoBehaviour {
+
+    [SerializeField] private ItemSwiper ItemSwiper;
 
     public const int Rows = 7;
     public const int Cols = 5;
@@ -15,8 +18,14 @@ public class Grid : MonoBehaviour {
 
     private List<int> completedRowIndexes = new List<int>();
 
+    public event EventHandler<OnRowCompletedEventArgs> OnRowCompleted;
+    public class OnRowCompletedEventArgs : EventArgs {
+        public ItemType itemType;
+        public int completedCellCount;
+    }
+
     private void Start() {
-        ItemSwiper.Instance.OnSwapExecuted += Grid_OnSwapExecuted;
+        ItemSwiper.OnSwapExecuted += Grid_OnSwapExecuted;
 
         CreateCells();
         PrepareCells();
@@ -63,8 +72,15 @@ public class Grid : MonoBehaviour {
                     matchedCellsCountWithFirstCell++;
                 }
             }
-            
+
             if (matchedCellsCountWithFirstCell == Cols - 1) {
+                ItemType completedRowItemType = Cells[0, x].Item.ItemType;
+
+                OnRowCompleted?.Invoke(this, new OnRowCompletedEventArgs {
+                    itemType = completedRowItemType,
+                    completedCellCount = matchedCellsCountWithFirstCell + 1
+                });
+
                 completedRowIndexes.Add(x);
                 UpdateCompletedRow(x);
             }

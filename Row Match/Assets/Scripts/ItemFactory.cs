@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ItemFactory : MonoBehaviour {
 
-    public static ItemFactory Instance { get; private set; }
-
     private static readonly ItemType[] DefaultItemArray = new[] {
             ItemType.GreenCube,
             ItemType.YellowCube,
@@ -13,11 +11,7 @@ public class ItemFactory : MonoBehaviour {
             ItemType.RedCube
         };
 
-    private void Awake() {
-        Instance = this;
-    }
-
-    public Item CreateItem(Cell cell, ItemType itemType) {
+    public static Item CreateItem(Cell cell, ItemType itemType) {
         var item = cell.gameObject.AddComponent<Item>();
         item.PrepareItem(itemType);
 

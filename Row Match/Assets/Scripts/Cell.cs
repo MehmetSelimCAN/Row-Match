@@ -35,7 +35,7 @@ public class Cell : MonoBehaviour {
     public void InsertItem(ItemType itemType) {
         if (item != null) return;
 
-        item = ItemFactory.Instance.CreateItem(this, itemType);
+        item = ItemFactory.CreateItem(this, itemType);
         item.transform.position = transform.position;
     }
 

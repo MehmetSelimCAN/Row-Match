@@ -5,20 +5,18 @@ using UnityEngine.UI;
 
 public class MoveCounter : MonoBehaviour {
 
-    public static MoveCounter Instance { get; private set; }
+    [SerializeField] private ItemSwiper ItemSwiper;
 
     [SerializeField] private Text remainingMoveCountText;
     private int remainingMoveCount = 25;
     public int RemainingMoveCount { get { return remainingMoveCount; } }
 
     private void Awake() {
-        Instance = this;
-
         UpdateRemainingMoveCountText();
     }
 
     private void Start() {
-        ItemSwiper.Instance.OnSwapExecuted += MoveCounter_OnSwapExecuted;
+        ItemSwiper.OnSwapExecuted += MoveCounter_OnSwapExecuted;
     }
 
     private void MoveCounter_OnSwapExecuted(object sender, ItemSwiper.OnSwapExecutedEventArgs e) {
