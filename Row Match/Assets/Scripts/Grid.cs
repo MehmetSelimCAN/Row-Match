@@ -39,7 +39,7 @@ public class Grid : MonoBehaviour {
         Cells[firstCell.X, firstCell.Y] = secondCell;
         Cells[secondCell.X, secondCell.Y] = firstCell;
 
-        Vector2Int tempPosition = firstCell.Position;
+        Vector3Int tempPosition = firstCell.Position;
         firstCell.Move(secondCell.Position);
         secondCell.Move(tempPosition);
     }
