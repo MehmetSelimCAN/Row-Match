@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridCreator : MonoBehaviour {
+public class Grid : MonoBehaviour {
 
     public const int Rows = 7;
     public const int Cols = 5;
@@ -33,5 +33,14 @@ public class GridCreator : MonoBehaviour {
                 Cells[x, y].Prepare(x, y);
             }
         }
+    }
+
+    public void SwapCells(Cell firstCell, Cell secondCell) {
+        Cells[firstCell.X, firstCell.Y] = secondCell;
+        Cells[secondCell.X, secondCell.Y] = firstCell;
+
+        Vector2Int tempPosition = firstCell.Position;
+        firstCell.Move(secondCell.Position);
+        secondCell.Move(tempPosition);
     }
 }

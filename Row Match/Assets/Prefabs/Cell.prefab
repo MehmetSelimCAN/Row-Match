@@ -189,10 +189,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7633212867583662099}
   - component: {fileID: 7842423607804505201}
-  - component: {fileID: 3032835243156593507}
+  - component: {fileID: 5496189938262513563}
   m_Layer: 0
   m_Name: Cell
-  m_TagString: Untagged
+  m_TagString: CellCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -227,7 +227,7 @@ MonoBehaviour:
   X: 0
   Y: 0
   LabelText: {fileID: 7016115596240312330}
---- !u!61 &3032835243156593507
+--- !u!61 &5496189938262513563
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -243,10 +243,10 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
