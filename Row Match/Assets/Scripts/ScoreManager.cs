@@ -21,16 +21,16 @@ public class ScoreManager : MonoBehaviour {
     private void GainScore(ItemType itemType, int completedCellCount) {
         switch (itemType) {
             case ItemType.RedCube:
-                score += (completedCellCount * 100);
+                score += (completedCellCount * (int)ItemType.RedCube);
                 break;
             case ItemType.GreenCube:
-                score += (completedCellCount * 150);
+                score += (completedCellCount * (int)ItemType.GreenCube);
                 break;
             case ItemType.BlueCube:
-                score += (completedCellCount * 200);
+                score += (completedCellCount * (int)ItemType.BlueCube);
                 break;
             case ItemType.YellowCube:
-                score += (completedCellCount * 250);
+                score += (completedCellCount * (int)ItemType.YellowCube);
                 break;
         }
 

@@ -1,7 +1,7 @@
 public enum ItemType {
     CompletedCube,
-    GreenCube,
-    YellowCube,
-    BlueCube,
-    RedCube,
+    RedCube = 100,
+    GreenCube = 150,
+    BlueCube = 200,
+    YellowCube = 250,
 }
