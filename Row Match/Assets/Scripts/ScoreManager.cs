@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ScoreManager : MonoBehaviour {
 
     [SerializeField] private Grid Grid;
-    [SerializeField] private Text scoreText;
+    [SerializeField] private TextMeshProUGUI scoreText;
 
     private int score;
 
@@ -38,6 +39,6 @@ public class ScoreManager : MonoBehaviour {
     }
 
     private void UpdateScoreText() {
-        scoreText.text = score.ToString();
+        scoreText.SetText(score.ToString());
     }
 }

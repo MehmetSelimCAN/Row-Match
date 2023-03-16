@@ -8,8 +8,8 @@ public class Grid : MonoBehaviour {
 
     [SerializeField] private ItemSwiper ItemSwiper;
 
-    public const int Rows = 7;
-    public const int Cols = 5;
+    public const int Rows = 8;
+    public const int Cols = 6;
 
     public Transform CellsParent;
 

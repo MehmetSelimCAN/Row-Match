@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class MoveCounter : MonoBehaviour {
 
     [SerializeField] private ItemSwiper ItemSwiper;
 
-    [SerializeField] private Text remainingMoveCountText;
+    [SerializeField] private TextMeshProUGUI remainingMoveCountText;
     private int remainingMoveCount = 25;
     public int RemainingMoveCount { get { return remainingMoveCount; } }
 
@@ -29,7 +30,7 @@ public class MoveCounter : MonoBehaviour {
     }
 
     private void UpdateRemainingMoveCountText() {
-        remainingMoveCountText.text = remainingMoveCount.ToString();
+        remainingMoveCountText.SetText(remainingMoveCount.ToString());
     }
 
 }

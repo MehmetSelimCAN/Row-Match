@@ -4,11 +4,11 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - CompletedCubeSprite: {fileID: 21300000, guid: e2cb4959ff1ee034a9b7d9fb9ce592a6, type: 3}
-  - RedCubeSprite: {fileID: 21300000, guid: ee88ee92e58e55040a6a6eb1d2d0b2b2, type: 3}
-  - GreenCubeSprite: {fileID: 21300000, guid: e538c2ccc855dd34483e28907e5cb563, type: 3}
-  - BlueCubeSprite: {fileID: 21300000, guid: 80f72fd40929d8f4d889bac6207ec6a4, type: 3}
-  - YellowCubeSprite: {fileID: 21300000, guid: c334364710b516946aeeaf5bbd7d1c2e, type: 3}
+  - CompletedCubeSprite: {fileID: 21300000, guid: 88b0d4f2bc0f4e441a426f093119a9e9, type: 3}
+  - RedCubeSprite: {fileID: 21300000, guid: b7481a4c424715542a70ac1efc7468db, type: 3}
+  - GreenCubeSprite: {fileID: 21300000, guid: 50dd2e8acaa7426438d693e39eb73026, type: 3}
+  - BlueCubeSprite: {fileID: 21300000, guid: 23c39604c54f9f944ac7791b186f3dce, type: 3}
+  - YellowCubeSprite: {fileID: 21300000, guid: a292bddf8693e00428dace4a7f770aa6, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
