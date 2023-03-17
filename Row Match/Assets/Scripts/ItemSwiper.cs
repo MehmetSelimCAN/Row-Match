@@ -31,7 +31,7 @@ public class ItemSwiper : MonoBehaviour {
     }
 
     private void HandleDragging() {
-        if (MoveCounter.remainingMoveCount == 0) return;
+        if (MoveCounter.RemainingMoveCount == 0) return;
 
         if (Input.GetMouseButtonDown(0)) {
             dragStartPosition = Camera.ScreenToWorldPoint(Input.mousePosition);

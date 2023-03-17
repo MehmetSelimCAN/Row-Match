@@ -67,10 +67,10 @@ public class LevelData {
         Grid.Cells = new Cell[gridWidth, gridHeight];
     }
 
-    private void AssignMoveCount() {
+    public void AssignMoveCount() {
         int moveCount = int.Parse(moveCountStr);
 
-        MoveCounter.remainingMoveCount = moveCount;
+        MoveCounter.RemainingMoveCount = moveCount;
     }
 
     private void AssignGridData() {

@@ -9,7 +9,7 @@ public class MoveCounter : MonoBehaviour {
     [SerializeField] private ItemSwiper ItemSwiper;
 
     [SerializeField] private TextMeshProUGUI remainingMoveCountText;
-    public static int remainingMoveCount = 25;
+    public static int RemainingMoveCount;
 
     private void Start() {
         ItemSwiper.OnSwapExecuted += MoveCounter_OnSwapExecuted;
@@ -22,12 +22,12 @@ public class MoveCounter : MonoBehaviour {
     }
 
     private void SpentMove() {
-        remainingMoveCount--;
+        RemainingMoveCount--;
         UpdateRemainingMoveCountText();
     }
 
     private void UpdateRemainingMoveCountText() {
-        remainingMoveCountText.SetText(remainingMoveCount.ToString());
+        remainingMoveCountText.SetText(RemainingMoveCount.ToString());
     }
 
 }

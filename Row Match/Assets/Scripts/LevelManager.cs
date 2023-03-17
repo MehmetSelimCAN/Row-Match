@@ -10,6 +10,8 @@ public class LevelManager : MonoBehaviour {
 
     private void Awake() {
         levelData.AssignGridSize();
+        levelData.AssignMoveCount();
+
         PrepareGrid();
         PrepareLevel();
     }
