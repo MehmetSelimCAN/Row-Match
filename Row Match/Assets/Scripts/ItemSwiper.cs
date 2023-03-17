@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class ItemSwiper : MonoBehaviour {
 
-    [SerializeField] private MoveCounter MoveCounter;
-
     private const string CellCollider = "CellCollider";
 
     [SerializeField] private Camera Camera;
@@ -33,7 +31,7 @@ public class ItemSwiper : MonoBehaviour {
     }
 
     private void HandleDragging() {
-        if (MoveCounter.RemainingMoveCount == 0) return;
+        if (MoveCounter.remainingMoveCount == 0) return;
 
         if (Input.GetMouseButtonDown(0)) {
             dragStartPosition = Camera.ScreenToWorldPoint(Input.mousePosition);

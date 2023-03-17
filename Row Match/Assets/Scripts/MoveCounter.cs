@@ -9,15 +9,12 @@ public class MoveCounter : MonoBehaviour {
     [SerializeField] private ItemSwiper ItemSwiper;
 
     [SerializeField] private TextMeshProUGUI remainingMoveCountText;
-    private int remainingMoveCount = 25;
-    public int RemainingMoveCount { get { return remainingMoveCount; } }
-
-    private void Awake() {
-        UpdateRemainingMoveCountText();
-    }
+    public static int remainingMoveCount = 25;
 
     private void Start() {
         ItemSwiper.OnSwapExecuted += MoveCounter_OnSwapExecuted;
+
+        UpdateRemainingMoveCountText();
     }
 
     private void MoveCounter_OnSwapExecuted(object sender, ItemSwiper.OnSwapExecutedEventArgs e) {

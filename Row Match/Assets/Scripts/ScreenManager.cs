@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScreenManager : MonoBehaviour {
 
-    private void Awake() {
+    private void Start() {
         PrepareCamera();
     }
 

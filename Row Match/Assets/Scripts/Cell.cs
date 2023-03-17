@@ -21,9 +21,6 @@ public class Cell : MonoBehaviour {
         Y = y;
         transform.localPosition = new Vector3(x, y);
         UpdateLabel();
-
-        ItemType itemType = ItemFactory.GetRandomItemType();
-        InsertItem(itemType);
     }
 
     private void UpdateLabel() {
@@ -36,7 +33,6 @@ public class Cell : MonoBehaviour {
         if (item != null) return;
 
         item = ItemFactory.CreateItem(this, itemType);
-        item.transform.position = transform.position;
     }
 
     public void Move(Vector3Int newPosition) {

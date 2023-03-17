@@ -8,16 +8,16 @@ public class Grid : MonoBehaviour {
 
     [SerializeField] private ItemSwiper ItemSwiper;
 
-    public const int Rows = 8;
-    public const int Cols = 6;
+    public static int Rows;
+    public static int Cols;
 
     public Transform CellsParent;
 
     [SerializeField] private Cell cellPrefab;
 
-    public readonly Cell[,] Cells = new Cell[Cols, Rows];
+    public static Cell[,] Cells;
 
-    private HashSet<int> completedRowIndexes = new HashSet<int> { -1, Rows};
+    private HashSet<int> completedRowIndexes = new HashSet<int>();
     private HashSet<int> cannotBeCompletedRowIndexes = new HashSet<int>();
 
     public event EventHandler<OnRowCompletedEventArgs> OnRowCompleted;
@@ -28,14 +28,18 @@ public class Grid : MonoBehaviour {
 
     private void Start() {
         ItemSwiper.OnSwapExecuted += Grid_OnSwapExecuted;
-
-        CreateCells();
-        PrepareCells();
+        completedRowIndexes.Add(-1);
+        completedRowIndexes.Add(Rows);
     }
 
     private void Grid_OnSwapExecuted(object sender, ItemSwiper.OnSwapExecutedEventArgs e) {
         SwapCells(e.firstCell, e.secondCell);
         CheckEveryRow();
+    }
+
+    public void Prepare() {
+        CreateCells();
+        PrepareCells();
     }
 
     private void CreateCells() {
