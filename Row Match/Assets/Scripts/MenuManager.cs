@@ -5,13 +5,33 @@ using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour {
 
-    [SerializeField] private Transform levelPopup;
+    [SerializeField] private Transform levelsPopup;
+    [SerializeField] private Button openLevelsPopupButton;
+    [SerializeField] private Button closeLevelsPopupButton;
+    [SerializeField] private Transform celebrationScreen;
+    public static bool highScore;
+
+
+    private void Awake() {
+        openLevelsPopupButton.onClick.AddListener(() => {
+            OpenLevelPopup();
+        });
+
+        closeLevelsPopupButton.onClick.AddListener(() => {
+            CloseLevelPopup();
+        });
+
+
+        if (highScore) {
+            celebrationScreen.gameObject.SetActive(true);
+        }
+    }
 
     public void OpenLevelPopup() {
-        levelPopup.gameObject.SetActive(true);
+        levelsPopup.gameObject.SetActive(true);
     }
 
     public void CloseLevelPopup() {
-        levelPopup.gameObject.SetActive(false);
+        levelsPopup.gameObject.SetActive(false);
     }
 }

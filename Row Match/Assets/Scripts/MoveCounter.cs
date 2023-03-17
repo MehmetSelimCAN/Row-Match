@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using UnityEngine.UI;
 using TMPro;
 
@@ -10,6 +11,8 @@ public class MoveCounter : MonoBehaviour {
 
     [SerializeField] private TextMeshProUGUI remainingMoveCountText;
     public static int RemainingMoveCount;
+
+    public event EventHandler OnMoveCountFinished;
 
     private void Start() {
         ItemSwiper.OnSwapExecuted += MoveCounter_OnSwapExecuted;
@@ -24,6 +27,10 @@ public class MoveCounter : MonoBehaviour {
     private void SpentMove() {
         RemainingMoveCount--;
         UpdateRemainingMoveCountText();
+
+        if (RemainingMoveCount == 0) {
+            OnMoveCountFinished?.Invoke(this, EventArgs.Empty);
+        }
     }
 
     private void UpdateRemainingMoveCountText() {

@@ -26,6 +26,8 @@ public class Grid : MonoBehaviour {
         public int completedCellCount;
     }
 
+    public event EventHandler OnPossibleRowMatchCountReachedZero;
+
     private void Start() {
         ItemSwiper.OnSwapExecuted += Grid_OnSwapExecuted;
         completedRowIndexes.Add(-1);
@@ -109,7 +111,7 @@ public class Grid : MonoBehaviour {
         int cannotBeCompletedRowCount = cannotBeCompletedRowIndexes.Count;
 
         if (completedRowCount + cannotBeCompletedRowCount == Rows + 2) {
-            Debug.Log("There is no any row match left");
+            OnPossibleRowMatchCountReachedZero?.Invoke(this, EventArgs.Empty);
         }
     }
 
