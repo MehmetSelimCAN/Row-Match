@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -19,9 +17,6 @@ public class LevelButton : MonoBehaviour {
 
     private void Awake() {
         lockAnimator = GetComponentInChildren<Animator>();
-
-        //PlayerPrefs.SetString(levelName.ToString(), "Locked");
-        //PlayerPrefs.SetInt("Highscore" + levelName.ToString(), 0);
 
         if (!PlayerPrefs.GetString(LevelName.Level1.ToString()).Equals("Unlocked")) {
             PlayerPrefs.SetString(LevelName.Level1.ToString(), "Unlocked");

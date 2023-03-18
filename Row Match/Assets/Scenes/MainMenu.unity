@@ -272,7 +272,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 257.5, y: -155.5845}
+  m_AnchoredPosition: {x: 247.5, y: -155.5845}
   m_SizeDelta: {x: 520.643, y: 103.723}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &30005446
@@ -904,8 +904,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 7.5, y: 8.034}
-  m_SizeDelta: {x: -85, y: -153.365}
+  m_AnchoredPosition: {x: 7.5, y: 17.49701}
+  m_SizeDelta: {x: -85, y: -128.79}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &173755603
 MonoBehaviour:
@@ -3167,7 +3167,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 257.5, y: -985.3686}
+  m_AnchoredPosition: {x: 247.5, y: -985.3686}
   m_SizeDelta: {x: 520.643, y: 103.723}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &568381108
@@ -3763,7 +3763,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 257.5, y: -363.03052}
+  m_AnchoredPosition: {x: 247.5, y: -363.03052}
   m_SizeDelta: {x: 520.643, y: 103.723}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &635806250
@@ -4837,7 +4837,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 257.5, y: -570.4765}
+  m_AnchoredPosition: {x: 247.5, y: -570.4765}
   m_SizeDelta: {x: 520.643, y: 103.723}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &863359144
@@ -6007,7 +6007,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 257.5, y: -881.64557}
+  m_AnchoredPosition: {x: 247.5, y: -881.64557}
   m_SizeDelta: {x: 520.643, y: 103.723}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1122425240
@@ -7418,7 +7418,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 257.5, y: -259.3075}
+  m_AnchoredPosition: {x: 247.5, y: -259.3075}
   m_SizeDelta: {x: 520.643, y: 103.723}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1372939031
@@ -7478,7 +7478,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 257.5, y: -466.7535}
+  m_AnchoredPosition: {x: 247.5, y: -466.7535}
   m_SizeDelta: {x: 520.643, y: 103.723}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1420139340
@@ -9226,7 +9226,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 257.5, y: -51.8615}
+  m_AnchoredPosition: {x: 247.5, y: -51.8615}
   m_SizeDelta: {x: 520.643, y: 103.723}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1713279455
@@ -10256,7 +10256,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 257.5, y: -777.92255}
+  m_AnchoredPosition: {x: 247.5, y: -777.92255}
   m_SizeDelta: {x: 520.643, y: 103.723}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1841551850
@@ -11589,7 +11589,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 257.5, y: -674.1995}
+  m_AnchoredPosition: {x: 247.5, y: -674.1995}
   m_SizeDelta: {x: 520.643, y: 103.723}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2031033527
@@ -11922,8 +11922,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -220.298}
-  m_SizeDelta: {x: 0, y: 440.5951}
+  m_AnchoredPosition: {x: 0.000015258789, y: -208.01007}
+  m_SizeDelta: {x: 0, y: 416.02008}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2048730477
 MonoBehaviour:
@@ -11939,7 +11939,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Padding:
     m_Left: 0
-    m_Right: -100
+    m_Right: -80
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 1

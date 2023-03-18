@@ -3,7 +3,9 @@ guid: 214bf94ab5235154ea146d47791e987d
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - lightGridTile: {fileID: 21300000, guid: 753e0d8a8d24dc14da69f3aeba40c6be, type: 3}
+  - darkGridTile: {fileID: 21300000, guid: 4c28136ca5d23b042bbca67de4f2c409, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
