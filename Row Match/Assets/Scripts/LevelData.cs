@@ -55,6 +55,7 @@ public class LevelData {
         Grid.Cols = gridWidth;
         Grid.Rows = gridHeight;
         Grid.Cells = new Cell[gridWidth, gridHeight];
+        Grid.CellsBackground = new CellBackground[gridWidth, gridHeight];
     }
 
     public void AssignMoveCount() {

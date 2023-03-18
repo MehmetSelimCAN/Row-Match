@@ -31,6 +31,7 @@ public class ItemSwiper : MonoBehaviour {
     }
 
     private void HandleDragging() {
+        if (GameManager.isGameOver) return;
         if (MoveCounter.RemainingMoveCount == 0) return;
 
         if (Input.GetMouseButtonDown(0)) {

@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class FinishGameAnimationEvents : MonoBehaviour {
 
+    public void GameOver() {
+        GameManager.GameOver();
+    }
+
     public void BackToMenu() {
         GameManager.BackToMenu();
     }

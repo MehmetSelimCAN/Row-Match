@@ -11,7 +11,11 @@ public class GameManager : MonoBehaviour {
 
     [SerializeField] private Animator UI_Animator;
 
+    public static bool isGameOver;
+
     private void Awake() {
+        isGameOver = false;
+
         MoveCounter.OnMoveCountFinished += GameManager_OnMoveCountFinished;
         Grid.OnPossibleRowMatchCountReachedZero += GameManager_OnPossibleRowMatchCountReachedZero;
     }
@@ -26,6 +30,10 @@ public class GameManager : MonoBehaviour {
 
     private void FinishGameAnimation() {
         UI_Animator.SetTrigger("FinishGame");
+    }
+
+    public static void GameOver() {
+        isGameOver = true;
     }
 
     public static void CheckNextLevelLock() {

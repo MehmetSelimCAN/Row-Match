@@ -12,10 +12,17 @@ public class Grid : MonoBehaviour {
     public static int Cols;
 
     public Transform CellsParent;
-
     [SerializeField] private Cell cellPrefab;
-
     public static Cell[,] Cells;
+
+    public Transform CellsBackgroundParent;
+    [SerializeField] private CellBackground cellBackgroundPrefab;
+    public static CellBackground[,] CellsBackground;
+
+    [SerializeField] private SpriteRenderer gridTopBorder;
+    [SerializeField] private SpriteRenderer gridBottomBorder;
+    [SerializeField] private SpriteRenderer gridLeftBorder;
+    [SerializeField] private SpriteRenderer gridRightBorder;
 
     private HashSet<int> completedRowIndexes = new HashSet<int>();
     private HashSet<int> cannotBeCompletedRowIndexes = new HashSet<int>();
@@ -40,8 +47,42 @@ public class Grid : MonoBehaviour {
     }
 
     public void Prepare() {
+        CreateCellsBackground();
+        PrepareCellsBackground();
+        PrepareBackgroundBorders();
         CreateCells();
         PrepareCells();
+    }
+
+    private void CreateCellsBackground() {
+        for (int y = 0; y < Rows; y++) {
+            for (int x = 0; x < Cols; x++) {
+                var cellBackground = Instantiate(cellBackgroundPrefab, Vector3.zero, Quaternion.identity, CellsBackgroundParent);
+                CellsBackground[x, y] = cellBackground;
+            }
+        }
+    }
+
+    private void PrepareCellsBackground() {
+        for (int y = 0; y < Rows; y++) {
+            for (int x = 0; x < Cols; x++) {
+                CellsBackground[x, y].Prepare(x, y);
+            }
+        }
+    }
+
+    private void PrepareBackgroundBorders() {
+        gridTopBorder.transform.localPosition = new Vector3((Cols - 1) / 2f, Rows);
+        gridTopBorder.size = new Vector2(Cols, 1);
+
+        gridBottomBorder.transform.localPosition = new Vector3((Cols - 1) / 2f, -1);
+        gridBottomBorder.size = new Vector2(Cols, 1);
+
+        gridLeftBorder.transform.localPosition = new Vector3(-1, (Rows - 1) / 2f);
+        gridLeftBorder.size = new Vector2(Rows, 1);
+
+        gridRightBorder.transform.localPosition = new Vector3(Cols, (Rows - 1) / 2f);
+        gridRightBorder.size = new Vector2(Rows, 1);
     }
 
     private void CreateCells() {
