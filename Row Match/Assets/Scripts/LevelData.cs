@@ -4,21 +4,11 @@ using UnityEngine;
 
 public class LevelData {
     public LevelData(LevelName levelName) {
-        switch (levelName) {
-            case LevelName.Level1:
-                levelInformation = Resources.Load<TextAsset>("Levels/Level1").ToString();
-                break;
-            case LevelName.Level2:
-                levelInformation = Resources.Load<TextAsset>("Levels/Level2").ToString();
-                break;
-            case LevelName.Level3:
-                levelInformation = Resources.Load<TextAsset>("Levels/Level3").ToString();
-                break;
-            default:
-                levelInformation = Resources.Load<TextAsset>("Levels/Level1").ToString();
-                break;
-        }
+        levelInformation = Resources.Load<TextAsset>("Levels/" + levelName).ToString();
+        this.levelName = levelName;
     }
+
+    public LevelName levelName;
 
     private string levelInformation;
     private string levelNumberStr;

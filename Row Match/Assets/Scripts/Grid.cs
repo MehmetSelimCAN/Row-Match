@@ -187,4 +187,13 @@ public class Grid : MonoBehaviour {
 
         return (greenCubeCount >= Cols || blueCubeCount >= Cols || redCubeCount >= Cols || yellowCubeCount >= Cols);
     }
+
+    public static void CellsFadeOut() {
+        for (int y = 0; y < Rows; y++) {
+            for (int x = 0; x < Cols; x++) {
+                Cell cell = Cells[x, y];
+                cell.StartCoroutine(cell.FadeOutAnimation());
+            }
+        }
+    }
 }

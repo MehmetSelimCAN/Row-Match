@@ -9,9 +9,10 @@ public class ScoreManager : MonoBehaviour {
     [SerializeField] private Grid Grid;
     [SerializeField] private TextMeshProUGUI scoreText;
 
-    private int score;
+    public static int score;
 
     private void Awake() {
+        score = 0;
         Grid.OnRowCompleted += ScoreManager_OnRowCompleted;
     }
 
@@ -40,5 +41,21 @@ public class ScoreManager : MonoBehaviour {
 
     private void UpdateScoreText() {
         scoreText.SetText(score.ToString());
+    }
+
+    public static bool CheckHighscore() {
+        if (score > PlayerPrefs.GetInt("Highscore" + LevelManager.levelData.levelName)) {
+            SetHighscore();
+            MenuManager.Highscored = true;
+            return true;
+        }
+
+        return false;
+    }
+
+    public static void SetHighscore() {
+        PlayerPrefs.SetInt("CelebrationHighscore", score);
+
+        PlayerPrefs.SetInt("Highscore" + LevelManager.levelData.levelName, score);
     }
 }

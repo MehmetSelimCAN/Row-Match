@@ -51,4 +51,18 @@ public class Cell : MonoBehaviour {
         transform.localPosition = newPosition;
         UpdateLabel();
     }
+
+    public IEnumerator FadeOutAnimation() {
+        var spriteRenderer = Item.SpriteRenderer;
+
+        Color newSpriteColor = spriteRenderer.color;
+        float alphaValue = 1;
+        while (alphaValue > 0) {
+            alphaValue -= Time.deltaTime;
+            newSpriteColor.a = alphaValue;
+
+            spriteRenderer.color = newSpriteColor;
+            yield return null;
+        }
+    }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class MenuManager : MonoBehaviour {
 
@@ -9,7 +10,12 @@ public class MenuManager : MonoBehaviour {
     [SerializeField] private Button openLevelsPopupButton;
     [SerializeField] private Button closeLevelsPopupButton;
     [SerializeField] private Transform celebrationScreen;
-    public static bool highScore;
+    [SerializeField] private Transform fadeInScreen;
+
+    [SerializeField] private TextMeshProUGUI highscoreText;
+
+    public static bool Highscored;
+    public static bool ComingFromGameScene;
 
 
     private void Awake() {
@@ -22,16 +28,38 @@ public class MenuManager : MonoBehaviour {
         });
 
 
-        if (highScore) {
-            celebrationScreen.gameObject.SetActive(true);
+        if (ComingFromGameScene) {
+            if (Highscored) {
+                OpenCelebrationScreen();
+                UpdateHighscoreText();
+                Highscored = false;
+            }
+            else {
+                OpenFadeInScreen();
+                OpenLevelPopup();
+            }
         }
     }
 
     public void OpenLevelPopup() {
+        openLevelsPopupButton.gameObject.SetActive(false);
         levelsPopup.gameObject.SetActive(true);
     }
 
     public void CloseLevelPopup() {
+        openLevelsPopupButton.gameObject.SetActive(true);
         levelsPopup.gameObject.SetActive(false);
+    }
+
+    private void OpenCelebrationScreen() {
+        celebrationScreen.gameObject.SetActive(true);
+    }
+
+    private void OpenFadeInScreen() {
+        fadeInScreen.gameObject.SetActive(true);
+    }
+
+    private void UpdateHighscoreText() {
+        highscoreText.SetText(PlayerPrefs.GetInt("CelebrationHighscore").ToString());
     }
 }
