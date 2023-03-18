@@ -37,7 +37,8 @@ public class GameManager : MonoBehaviour {
     public static void CheckNextLevelLock() {
         //Unlock next level
         string nextLevelName = (LevelManager.levelData.levelName + 1).ToString();
-        if (ScoreManager.score > 0 && PlayerPrefs.GetString(nextLevelName).Equals("Locked")) {
+        bool nextLevelUnlocked = PlayerPrefs.GetString(nextLevelName).Equals("Unlocked");
+        if (ScoreManager.score > 0 && !nextLevelUnlocked) {
             PlayerPrefs.SetString(nextLevelName, "Unlocking");
         }
     }
@@ -45,6 +46,6 @@ public class GameManager : MonoBehaviour {
     public static void BackToMenu() {
         ScoreManager.CheckHighscore();
         MenuManager.ComingFromGameScene = true;
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("Menu");
     }
 }

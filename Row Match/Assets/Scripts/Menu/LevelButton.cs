@@ -50,8 +50,8 @@ public class LevelButton : MonoBehaviour {
     }
 
     private void UpdateHighestScore() {
-        bool locked = PlayerPrefs.GetString(levelName.ToString()).Equals("Locked");
-        if (locked) {
+        bool unlocked = PlayerPrefs.GetString(levelName.ToString()).Equals("Unlocked");
+        if (!unlocked) {
             levelScoreInfoText.SetText("Locked Level");
             return;
         }

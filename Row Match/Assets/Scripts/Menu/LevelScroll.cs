@@ -7,7 +7,7 @@ public class LevelScroll : MonoBehaviour {
 
     private void Awake() {
         scrollRect = GetComponent<ScrollRect>();
-        scrollRect.verticalNormalizedPosition = PlayerPrefs.GetFloat("LevelScrollRectPosition");
+        scrollRect.verticalNormalizedPosition = PlayerPrefs.GetFloat("LevelScrollRectPosition", 1);
     }
 
     public void UpdateScrollRectValue() {
