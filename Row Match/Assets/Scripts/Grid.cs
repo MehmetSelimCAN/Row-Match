@@ -154,7 +154,7 @@ public class Grid : MonoBehaviour {
         int completedRowCount = completedRowIndexes.Count;
         int cannotBeCompletedRowCount = cannotBeCompletedRowIndexes.Count;
 
-        if (completedRowCount + cannotBeCompletedRowCount == Rows + 2) {
+        if (completedRowCount + cannotBeCompletedRowCount == Rows) {
             OnPossibleRowMatchCountReachedZero?.Invoke(this, EventArgs.Empty);
         }
     }
@@ -183,7 +183,6 @@ public class Grid : MonoBehaviour {
         //There is an invisible border on row number "Rows".
         uncompletedRowInterval.Add(Rows);
         uncompletedRowIntervals.Add(uncompletedRowInterval);
-
 
         return uncompletedRowIntervals;
     }
@@ -240,7 +239,13 @@ public class Grid : MonoBehaviour {
         return (greenCubeCount >= Cols || blueCubeCount >= Cols || redCubeCount >= Cols || yellowCubeCount >= Cols);
     }
 
-    public static void CellsFadeOut() {
+    public static void LevelFadeOut() {
+        CellsBackgroundBorderFadeOut();
+        CellsBackgroundFadeOut();
+        CellsFadeOut();
+    }
+
+    private static void CellsFadeOut() {
         CellsBackgroundFadeOut();
 
         for (int y = 0; y < Rows; y++) {
@@ -251,7 +256,7 @@ public class Grid : MonoBehaviour {
         }
     }
 
-    public static void CellsBackgroundFadeOut() {
+    private static void CellsBackgroundFadeOut() {
         CellsBackgroundBorderFadeOut();
 
         for (int y = 0; y < Rows; y++) {
@@ -262,7 +267,7 @@ public class Grid : MonoBehaviour {
         }
     }
 
-    public static void CellsBackgroundBorderFadeOut() {
+    private static void CellsBackgroundBorderFadeOut() {
         for (int i = 0; i < BackgroundBorders.Length; i++) {
             BackgroundBorder backgroundBorder = BackgroundBorders[i];
             backgroundBorder.StartCoroutine(backgroundBorder.FadeOutAnimation());

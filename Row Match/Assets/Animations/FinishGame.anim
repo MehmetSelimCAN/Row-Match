@@ -302,7 +302,7 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 0.6666667
-    functionName: CellsFadeOut
+    functionName: LevelFadeOut
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

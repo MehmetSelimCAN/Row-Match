@@ -16,7 +16,7 @@ public class FinishGameAnimationEvents : MonoBehaviour {
         GameManager.CheckNextLevelLock();
     }
 
-    public void CellsFadeOut() {
-        Grid.CellsFadeOut();
+    public void LevelFadeOut() {
+        Grid.LevelFadeOut();
     }
 }
