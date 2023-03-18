@@ -19,10 +19,9 @@ public class Grid : MonoBehaviour {
     [SerializeField] private CellBackground cellBackgroundPrefab;
     public static CellBackground[,] CellsBackground;
 
-    [SerializeField] private SpriteRenderer gridTopBorder;
-    [SerializeField] private SpriteRenderer gridBottomBorder;
-    [SerializeField] private SpriteRenderer gridLeftBorder;
-    [SerializeField] private SpriteRenderer gridRightBorder;
+    public Transform BackgroundBorderParent;
+    [SerializeField] private BackgroundBorder backgroundBorderPrefab;
+    public static BackgroundBorder[] BackgroundBorders = new BackgroundBorder[4];
 
     private HashSet<int> completedRowIndexes = new HashSet<int>();
     private HashSet<int> cannotBeCompletedRowIndexes = new HashSet<int>();
@@ -37,8 +36,6 @@ public class Grid : MonoBehaviour {
 
     private void Start() {
         ItemSwiper.OnSwapExecuted += Grid_OnSwapExecuted;
-        completedRowIndexes.Add(-1);
-        completedRowIndexes.Add(Rows);
     }
 
     private void Grid_OnSwapExecuted(object sender, ItemSwiper.OnSwapExecutedEventArgs e) {
@@ -49,7 +46,10 @@ public class Grid : MonoBehaviour {
     public void Prepare() {
         CreateCellsBackground();
         PrepareCellsBackground();
+
+        CreateBackgroundBorders();
         PrepareBackgroundBorders();
+
         CreateCells();
         PrepareCells();
     }
@@ -71,18 +71,17 @@ public class Grid : MonoBehaviour {
         }
     }
 
+    private void CreateBackgroundBorders() {
+        for (int i = 0; i < 4; i++) {
+            var backgroundBorder = Instantiate(backgroundBorderPrefab, Vector3.zero, Quaternion.identity, CellsBackgroundParent);
+            BackgroundBorders[i] = backgroundBorder;
+        }
+    }
+
     private void PrepareBackgroundBorders() {
-        gridTopBorder.transform.localPosition = new Vector3((Cols - 1) / 2f, Rows);
-        gridTopBorder.size = new Vector2(Cols, 1);
-
-        gridBottomBorder.transform.localPosition = new Vector3((Cols - 1) / 2f, -1);
-        gridBottomBorder.size = new Vector2(Cols, 1);
-
-        gridLeftBorder.transform.localPosition = new Vector3(-1, (Rows - 1) / 2f);
-        gridLeftBorder.size = new Vector2(Rows, 1);
-
-        gridRightBorder.transform.localPosition = new Vector3(Cols, (Rows - 1) / 2f);
-        gridRightBorder.size = new Vector2(Rows, 1);
+        for (int i = 0; i < BackgroundBorders.Length; i++) {
+            BackgroundBorders[i].Prepare(BackgroundBorderLocation.Top + i);
+        }
     }
 
     private void CreateCells() {
@@ -115,19 +114,23 @@ public class Grid : MonoBehaviour {
         for (int x = 0; x < Rows; x++) {
             if (completedRowIndexes.Contains(x)) continue;
 
-            int matchedCellsCountWithFirstCell = 0;
+            bool rowMatched = false;
             for (int y = 0; y < Cols - 1; y++) {
                 if (Cells[y, x].Item.ItemType == Cells[y + 1, x].Item.ItemType) {
-                    matchedCellsCountWithFirstCell++;
+                    rowMatched = true;
+                }
+                else {
+                    rowMatched = false;
+                    break;
                 }
             }
 
-            if (matchedCellsCountWithFirstCell == Cols - 1) {
+            if (rowMatched) {
                 ItemType completedRowItemType = Cells[0, x].Item.ItemType;
 
                 OnRowCompleted?.Invoke(this, new OnRowCompletedEventArgs {
                     itemType = completedRowItemType,
-                    completedCellCount = matchedCellsCountWithFirstCell + 1
+                    completedCellCount = Cols
                 });
 
                 UpdateCompletedRow(x);
@@ -160,7 +163,10 @@ public class Grid : MonoBehaviour {
         List<List<int>> uncompletedRowIntervals = new List<List<int>>();
         List<int> uncompletedRowInterval = new List<int>();
 
-        for (int x = -1; x < Rows + 1; x++) {
+        //There is an invisible border on row number -1.
+        uncompletedRowInterval.Add(-1);
+
+        for (int x = 0; x < Rows; x++) {
             if (completedRowIndexes.Contains(x)) {
                 uncompletedRowInterval.Add(x);
 
@@ -173,6 +179,11 @@ public class Grid : MonoBehaviour {
                 }
             }
         }
+
+        //There is an invisible border on row number "Rows".
+        uncompletedRowInterval.Add(Rows);
+        uncompletedRowIntervals.Add(uncompletedRowInterval);
+
 
         return uncompletedRowIntervals;
     }
@@ -230,11 +241,31 @@ public class Grid : MonoBehaviour {
     }
 
     public static void CellsFadeOut() {
+        CellsBackgroundFadeOut();
+
         for (int y = 0; y < Rows; y++) {
             for (int x = 0; x < Cols; x++) {
                 Cell cell = Cells[x, y];
                 cell.StartCoroutine(cell.FadeOutAnimation());
             }
+        }
+    }
+
+    public static void CellsBackgroundFadeOut() {
+        CellsBackgroundBorderFadeOut();
+
+        for (int y = 0; y < Rows; y++) {
+            for (int x = 0; x < Cols; x++) {
+                CellBackground cellBackground = CellsBackground[x, y];
+                cellBackground.StartCoroutine(cellBackground.FadeOutAnimation());
+            }
+        }
+    }
+
+    public static void CellsBackgroundBorderFadeOut() {
+        for (int i = 0; i < BackgroundBorders.Length; i++) {
+            BackgroundBorder backgroundBorder = BackgroundBorders[i];
+            backgroundBorder.StartCoroutine(backgroundBorder.FadeOutAnimation());
         }
     }
 }

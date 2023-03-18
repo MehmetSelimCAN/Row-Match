@@ -16,4 +16,16 @@ public class CellBackground : MonoBehaviour {
         transform.localPosition = new Vector3(x, y);
         spriteRenderer.sprite = (x + y) % 2 == 0 ? lightGridTile : darkGridTile;
     }
+
+    public IEnumerator FadeOutAnimation() {
+        Color newSpriteColor = spriteRenderer.color;
+        float alphaValue = 1;
+        while (alphaValue > 0) {
+            alphaValue -= Time.deltaTime;
+            newSpriteColor.a = alphaValue;
+
+            spriteRenderer.color = newSpriteColor;
+            yield return null;
+        }
+    }
 }
