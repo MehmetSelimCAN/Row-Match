@@ -211,31 +211,28 @@ public class Grid : MonoBehaviour {
     }
 
     private bool IsThereEnoughCubeToRowMatchInInterval(int firstBorder, int secondBorder) {
-        int blueCubeCount = 0;
-        int yellowCubeCount = 0;
-        int greenCubeCount = 0;
-        int redCubeCount = 0;
+        Dictionary<ItemType, int> itemTypeCountDictionary = new Dictionary<ItemType, int>();
 
         for (int x = firstBorder + 1; x < secondBorder; x++) {
             for (int y = 0; y < Cols; y++) {
-                switch (Cells[y, x].Item.ItemType) {
-                    case ItemType.BlueCube:
-                        blueCubeCount++;
-                        break;
-                    case ItemType.RedCube:
-                        redCubeCount++;
-                        break;
-                    case ItemType.YellowCube:
-                        yellowCubeCount++;
-                        break;
-                    case ItemType.GreenCube:
-                        greenCubeCount++;
-                        break;
+                ItemType cellItemType = Cells[y, x].Item.ItemType;
+
+                if (itemTypeCountDictionary.ContainsKey(cellItemType)) {
+                    itemTypeCountDictionary[cellItemType]++;
+                }
+                else {
+                    itemTypeCountDictionary.Add(cellItemType, 1);
                 }
             }
         }
 
-        return (greenCubeCount >= Cols || blueCubeCount >= Cols || redCubeCount >= Cols || yellowCubeCount >= Cols);
+        foreach (var itemCount in itemTypeCountDictionary.Values) {
+            if (itemCount >= Cols) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public static void LevelFadeOut() {
